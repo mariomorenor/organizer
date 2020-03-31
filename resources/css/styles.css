@@ -1,0 +1,13 @@
+.welcomeImages{
+    width: 10rem;
+}
+
+.welcomeImages:hover{
+    
+    transform: scale(1.5);
+    transition: all 0.3s;
+}
+.welcomeImages:not(:hover){
+    transform: scale(1);
+    transition: all 0.3s;
+}
