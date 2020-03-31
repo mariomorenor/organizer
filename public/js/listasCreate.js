@@ -130,6 +130,13 @@ function eliminar_Registros(all = false, value) {
     $modified = true;
 }
 
+$('#codigo_a_insertar').keyup(function (e) { 
+ 
+    if(e.which == 13){
+        insertar_Registro();
+        
+    }
+});
 function insertar_Registro() {
     $modified = true
     var codigos = $table.bootstrapTable('getData');
@@ -143,7 +150,7 @@ function insertar_Registro() {
         $.get({
             url: '/clientes/comprobarCliente/' + $('#codigo_a_insertar').val(),
             success: function (response) {
-
+               
                 $table.bootstrapTable('insertRow', {
                     index: $table.bootstrapTable('getData').length,
                     row: {

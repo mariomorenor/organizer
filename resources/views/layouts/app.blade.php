@@ -22,7 +22,7 @@
             <a class="nav-item nav-link" href="{{ route('imprimir.index') }}">Imprimir</a>
           </div>
         </div>
-        <a class="navbar-brand">{{strftime('%d de %B, %Y')}}</a>
+        <span id="FActual" class="navbar-brand"></span>
       </nav>
       <div id="app">
         @yield('content')
@@ -31,3 +31,7 @@
     @yield('scripts')
 </body>
 </html>
+
+<script>
+  $('#FActual').text(moment().format('LL'))
+</script>

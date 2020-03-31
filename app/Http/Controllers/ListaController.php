@@ -140,10 +140,18 @@ class ListaController extends Controller
 
         if ( $request->has('fecha_Inicio')) {
     
-                return DB::table('registros')->whereBetween('fecha',[$request->fecha_Inicio,$request->fecha_Fin])->get();
+                return DB::table('registros')
+                ->join('clientes','clientes.codigo','like','registros.cliente_codigo')
+                ->whereBetween('fecha',[$request->fecha_Inicio,$request->fecha_Fin])
+                ->orderBy('posicion','asc')
+                ->get();
           
         }else if($request->codigo == null){
-            return  DB::table('registros')->where('fecha',$request->fecha)->get();
+            return  DB::table('registros')
+            ->join('clientes','clientes.codigo','like','registros.cliente_codigo')
+            ->where('fecha',$request->fecha)
+            ->orderBy('posicion','asc')
+            ->get();
         }
     }
 }

@@ -15,14 +15,14 @@
                         <input type="text" class="form-control" placeholder="Código" id="codigo_a_insertar"
                             name="codigo_a_insertar">
                         <div>
-                            <button type="button" onclick="insertar_Registro();"
+                            <button type="button"  onclick="insertar_Registro();"
                                 class="btn btn-primary ml-3">Insertar</button>
                         </div>
                     </div>
                 </div>
                 <form id="formAgregar_Lista" method="POST" action="{{ route('listas.store') }}">
                     @csrf
-                <table id="table" data-height="500" data-url="{{ route('listas.create') }}" data-toolbar="#toolbar"
+                <table id="table" data-height="500"  data-toolbar="#toolbar"
                     class="table" data-locale="es_SP">
                     <thead class="thead-dark">
                         <tr>
