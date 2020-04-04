@@ -10,6 +10,7 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
+        "@fortawesome/fontawesome-free": "^5.13.0",
         "axios": "^0.19",
         "bootstrap": "^4.0.0",
         "bootstrap-icons": "^1.0.0-alpha3",
@@ -20,6 +21,8 @@
         "jquery-datepicker": "^1.12.3",
         "jquery-ui": "^1.12.1",
         "jquery-ui-themes": "^1.12.0",
+        "jspdf": "^1.5.3",
+        "jspdf-autotable": "^3.3.2",
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.13",
         "moment": "^2.24.0",
@@ -29,6 +32,8 @@
         "sass": "^1.15.2",
         "sass-loader": "^8.0.2",
         "sweetalert2": "^9.10.6",
+        "table-export": "^1.0.2",
+        "tableexport.jquery.plugin": "^1.10.16",
         "vue": "^2.6.11",
         "vue-template-compiler": "^2.6.11"
     }
