@@ -17,7 +17,9 @@
                         <div>
                             <button type="button"  onclick="insertar_Registro();"
                                 class="btn btn-primary ml-3">Insertar</button>
+                            
                         </div>
+                        <h5 id="TituloFecha" class="ml-1"></h5>
                     </div>
                 </div>
                 <form id="formAgregar_Lista" method="POST" action="{{ route('listas.store') }}">

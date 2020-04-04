@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cliente;
+use App\Pago;
 use App\Rules\ComprobarSiExiste;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -60,12 +61,27 @@ class ListaController extends Controller
         if (count($codigos_existentes) == 0) {
             $numClientes = $request->codigo;
             for ($i = 0; $i < count($numClientes); $i++) {
-                DB::table('registros')->insert([
-                    'cliente_codigo' => $request->codigo[$i],
-                    'cantidad' => $request->cantidad[$i],
-                    'descripcion' => $request->observacion[$i],
-                    'fecha' => $request->fecha,
-                ]);
+                DB::transaction(function() use($request,$i){
+                    DB::table('registros')->insert([
+                        'cliente_codigo' => $request->codigo[$i],
+                        'cantidad' => $request->cantidad[$i],
+                        'descripcion' => $request->observacion[$i],
+                        'fecha' => $request->fecha,
+                    ]);
+                        $cliente = Cliente::find($request->codigo[$i]);
+                        $pago = Pago::where('codigo','like',$request->codigo[$i])->orderBy('fecha','desc')->first();
+                      
+                        $nuevo_pago = new Pago;
+                        $nuevo_pago->codigo = $request->codigo[$i];
+                        $nuevo_pago->fecha = $request->fecha;
+                        $nuevo_pago->tipo_transaccion = 'pelado de patas';
+                        $nuevo_pago->cantidad = $cliente->cobranza * $request->cantidad[$i];
+                        $nuevo_pago->reses = $request->cantidad[$i];
+                        $nuevo_pago->saldo = $pago==''? $cliente->cobranza * $request->cantidad[$i] :$pago->saldo + ($cliente->cobranza * $request->cantidad[$i]) ;
+                        $nuevo_pago->save();
+                });
+          
+
             }
             
         }else{
@@ -81,7 +97,7 @@ class ListaController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

@@ -25,7 +25,7 @@
             </div>
             <div class="col-4  justify-content-center d-flex">
                 <div class="">
-                    <a href="{{ route('imprimir.index') }}">
+                    <a href="{{ route('pagos.index') }}">
                         <img class="welcomeImages" src="{{ asset('images/imgImprimir.png') }}" alt="Imprimir">
                     </a>
                 </div>

@@ -28,7 +28,7 @@
             <div class="col-3">
                 <div id="datepicker"></div>
             </div>
-            <div class="col-3">
+            <div class="col-3 m-0">
                 <div class=""  style="height: 18rem">
                     <div class="form-group">
                         <label for="desde" class="font-weight-bold">Desde:</label>

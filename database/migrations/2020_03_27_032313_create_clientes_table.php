@@ -21,6 +21,7 @@ class CreateClientesTable extends Migration
             $table->string('direccion')->nullable();
             $table->integer('posicion')->default(0);
             $table->integer('mostrar')->default(true);
+            $table->decimal('cobranza',4,2)->default(2.50);
             $table->softDeletes();
             $table->timestamps();
 

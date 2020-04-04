@@ -6,6 +6,7 @@ var $modified = false;
 var $ultimaFecha = moment().format('LL');
 
 $('#fecha').val(moment().format('YYYY/MM/DD'))
+$('#TituloFecha').text(moment().format('LL'))
 
 setTimeout(function () {eliminar_color_amarillo_datepicker_maldita_sea()  }, 1);
 
@@ -22,9 +23,10 @@ $LabelTotalReses.text($total_Reses)
 
 $calendario.datepicker({
     duration: "slow",
-    maxDate: 0,
+    maxDate: 1,
     minDate: moment('20200323').format('LL'),
     onSelect: function (fecha, calendario) {
+        $('#TituloFecha').text(fecha)
         setTimeout(function () {eliminar_color_amarillo_datepicker_maldita_sea()  }, 1);
         if ($modified) {
             Swal.fire({

@@ -22,7 +22,7 @@ Route::get('lista/obtenerCodigos','ListaController@obtener_Codigos')->name('codi
 Route::resources([
     'clientes'=>'ClienteController',
     'listas'=>'ListaController',
-    'imprimir'=>'ImprimirController',
+    'pagos'=>'PagoController'
 ]);
 
 Route::get('clientes/comprobarCliente/{cliente}','ClienteController@comprobarCliente');
