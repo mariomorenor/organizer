@@ -17,9 +17,10 @@ class ListaController extends Controller
      */
     public function index(Request $request)
     {    
+
         if($request->ajax()){
             
-            $lista = DB::table('registros')->where('fecha',$request->fecha)->get();
+            $lista = DB::table('registros')->where('fecha',$request->fecha)->orderBy('fecha','asc')->get();
             return response()->json([
                 'totalRows'=>count($lista),
                 'rows'=>$lista
@@ -159,7 +160,7 @@ class ListaController extends Controller
                 return DB::table('registros')
                 ->join('clientes','clientes.codigo','like','registros.cliente_codigo')
                 ->whereBetween('fecha',[$request->fecha_Inicio,$request->fecha_Fin])
-                ->orderBy('posicion','asc')
+                ->orderBy('posicion','asc')->orderBy('fecha','asc')
                 ->get();
           
         }else if($request->codigo == null){

@@ -109,6 +109,10 @@ function eliminar_color_amarillo_datepicker_maldita_sea() {
     $(document).find('a.ui-state-highlight').removeClass('ui-state-highlight');
 }   
 
+function fechaFormatter(value,row) {
+    return moment(value).format('ll');
+}
+
 function accionesFormatter(value,row) {
   
     return '<button type="button" title="Eliminar Registro" onclick="eliminar_Registros('+false+','+"'"+row.cliente_codigo+"'"+')" class=" border border-dark btn btn-danger btn-sm"><svg class="bi bi-trash-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">'+

@@ -55,7 +55,7 @@
                                 <th data-field="acciones" data-align="center" data-formatter="accionesFormatter"></th>
                                 <th data-field="cliente_codigo" data-align="center" data-footer-formatter="codigoFootterFormatter">Código</th>
                                 <th data-field="cantidad" data-align="center" data-footer-formatter="cantidadFooterFoormatter">Cantidad</th>
-                                <th data-field="fecha" data-align="center" data-footer-formatter="fechaFooterFormatter">Fecha</th>
+                                <th data-field="fecha" data-formatter="fechaFormatter" data-align="center" data-footer-formatter="fechaFooterFormatter">Fecha</th>
                                 <th data-field="descripcion">Observación</th>
                             </tr>
                         </thead>
