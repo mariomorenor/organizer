@@ -52,7 +52,7 @@
                     <table data-show-columns="true" data-show-export="true" id="table"  data-unique-id="cliente_codigo" data-custom-search="buscarCodigo" data-show-footer="true" data-url="{{ route('codigos') }}" data-toolbar="#toolbar" data-search="true" data-height="450" class="table" data-locale="es_SP">
                         <thead class="thead-dark">
                             <tr>
-                                <th data-field="acciones" data-visible="false" data-align="center" data-formatter="accionesFormatter">Acciones</th>
+                                <th data-field="acciones"  data-align="center" data-formatter="accionesFormatter">Acciones</th>
                                 <th data-field="cliente_codigo" data-align="center" data-footer-formatter="codigoFootterFormatter">Código</th>
                                 <th data-field="cantidad" data-align="center" data-footer-formatter="cantidadFooterFoormatter">Cantidad</th>
                                 <th data-field="fecha" data-formatter="fechaFormatter" data-align="center" data-footer-formatter="fechaFooterFormatter">Fecha</th>
