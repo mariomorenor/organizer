@@ -13,28 +13,133 @@ class ClientesTableSeeder extends Seeder
     public function run()
     {
         DB::table('clientes')->insert([
-            'codigo'=>'95',
+            'codigo'=>'BS',
             'posicion'=>1
         ]);
         DB::table('clientes')->insert([
-            'codigo'=>'87',
+            'codigo'=>'105',
             'posicion'=>2
         ]);
         DB::table('clientes')->insert([
-            'codigo'=>'75',
+            'codigo'=>'101',
             'posicion'=>3
         ]);
         DB::table('clientes')->insert([
-            'codigo'=>'90',
+            'codigo'=>'95',
             'posicion'=>4
         ]);
         DB::table('clientes')->insert([
-            'codigo'=>'01',
+            'codigo'=>'67',
             'posicion'=>5
         ]);
         DB::table('clientes')->insert([
-            'codigo'=>'MTI',
+            'codigo'=>'70',
             'posicion'=>6
         ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'052',
+            'posicion'=>7
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'107',
+            'posicion'=>8
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'108',
+            'posicion'=>9
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'NS',
+            'posicion'=>10
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'130',
+            'posicion'=>11
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'109',
+            'posicion'=>12
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'JL',
+            'posicion'=>13
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'H50',
+            'posicion'=>14
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'6H',
+            'posicion'=>15
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'000',
+            'posicion'=>16
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'JE',
+            'posicion'=>17
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'DSX',
+            'posicion'=>18
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'136',
+            'posicion'=>19
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'IK',
+            'posicion'=>20
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'150',
+            'posicion'=>21
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'IR',
+            'posicion'=>22
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'CC',
+            'posicion'=>23
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'MTI',
+            'posicion'=>24
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'90',
+            'posicion'=>25
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'KG',
+            'posicion'=>26
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'110',
+            'posicion'=>27
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'CJL',
+            'posicion'=>28
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'SS',
+            'posicion'=>29
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'J50',
+            'posicion'=>30
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'RM',
+            'posicion'=>31
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'JU',
+            'posicion'=>32
+        ]);
+        
     }
 }
