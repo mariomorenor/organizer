@@ -128,13 +128,19 @@ class ListaController extends Controller
      */
     public function destroy($id,Request $request)
     {   
-        
-        intval($request->todos) == 0 ?
-        DB::table('registros')->where('cliente_codigo',$id)->where('fecha',$request->fecha)->delete():
-        DB::table('registros')->whereIn('cliente_codigo',$request->codigos)->where('fecha',$request->fecha)->delete();
-         
-        
-         
+        // Si $request->todos == 0 Elimina toda la lista
+        DB::transaction(function () use ($request, $id){
+            intval($request->todos) == 0 ?
+            DB::table('registros')->where('cliente_codigo',$id)->where('fecha',$request->fecha)->delete():
+            DB::table('registros')->whereIn('cliente_codigo',$request->codigos)->where('fecha',$request->fecha)->delete();
+            
+            foreach ($request->codigos as $codigo) {
+                $codigo_pago = Pago::where('codigo','like',$codigo)->where('fecha',$request->fecha)->delete();
+            }
+            
+             
+        });
+  
     }
 
     public function Comprobar_Si_Existen_Codigos($valores, $fecha)

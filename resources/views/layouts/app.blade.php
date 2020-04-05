@@ -19,7 +19,7 @@
             <a class="nav-item nav-link" href="{{ url('/') }}">Inicio <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" href="{{ route('clientes.index') }}">Clientes</a>
             <a class="nav-item nav-link" href="{{ route('listas.index') }}">Listas</a>
-            {{-- <a class="nav-item nav-link" href="{{ route('facturacion.index') }}">Imprimir</a> --}}
+            <a class="nav-item nav-link" href="{{ route('pagos.index') }}">Facturación</a>
           </div>
         </div>
         <span id="FActual" class="navbar-brand"></span>

@@ -14,9 +14,29 @@ class PagoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        
+    public function index(Request $request)
+    {   
+        if ($request->ajax()) {
+            $total_registros =  DB::table('clientes')
+            ->join('pagos','pagos.codigo','like','clientes.codigo')
+            ->distinct()
+            ->orderBy('clientes.posicion','asc')
+            ->get(['clientes.codigo','clientes.posicion']);
+    
+            $registros = [];
+    
+            $cont= 0;
+    
+            foreach ($total_registros as $codigos) {
+                $registros[$cont] = Pago::where('codigo','like',$codigos->codigo)->orderBy('fecha','desc')->first();
+                $cont++; 
+            }
+    
+            return response()->json([
+                'rows'=>$registros
+            ]);
+        }
+        return view('facturacion.index');
     }
 
     /**
