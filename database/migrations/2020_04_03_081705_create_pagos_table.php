@@ -17,9 +17,9 @@ class CreatePagosTable extends Migration
             $table->id();
             $table->string('codigo');
             $table->string('tipo_transaccion');
-            $table->date('fecha');
+            $table->timestamp('fecha');
             $table->decimal('cantidad',6,2);
-            $table->integer('reses');
+            $table->integer('reses')->nullable();
             $table->decimal('saldo',6,2);
             $table->string('descripcion')->nullable();
             $table->softDeletes();

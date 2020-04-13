@@ -44,9 +44,11 @@ class PagoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $listado_codigos = Cliente::orderBy('posicion','asc')->get('codigo');
+      
+        return view('facturacion.create')->with(['listado_codigos'=>$listado_codigos]);
     }
 
     /**
@@ -57,7 +59,31 @@ class PagoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+    for ($i=0; $i < count($request->codigo) ; $i++) { 
+       
+        DB::transaction(function() use ($request, $i){
+
+           
+            $saldo_actual = Pago::where('codigo','like',$request->codigo[$i])->orderBy('fecha','desc')->first();
+            
+            $saldo_actual = ($saldo_actual->saldo - $request->dinero[$i]) < 0 ? 0: ($saldo_actual->saldo - $request->dinero[$i]) ;
+            $registro_pago = new Pago;
+
+            $registro_pago->codigo = $request->codigo[$i];
+            $registro_pago->tipo_transaccion = 'Pagado';
+            $registro_pago->fecha = $request->fecha[$i];
+            $registro_pago->cantidad = $request->dinero[$i];
+            $registro_pago->saldo = $saldo_actual;
+            $registro_pago->descripcion = $request->descripcion[$i];
+            
+            $registro_pago->save();
+
+
+        });
+
+    }
+        return redirect()->route('pagos.index');
     }
 
     /**
@@ -71,7 +97,6 @@ class PagoController extends Controller
        
  
         if ($request->ajax()) {
-            // $registro = Pago::where('codigo','like',$codigo)->orderBy(['fecha','desc'])->get();
             if($request->tipo_transaccion === 'all'){
                 $registro = Pago::where('codigo','like',$codigo)->orderBy('tipo_transaccion','desc')->orderBy('fecha','desc')->get();
             }else{
@@ -117,5 +142,11 @@ class PagoController extends Controller
     public function destroy(Pago $pago)
     {
         //
+    }
+
+    public function comprobarSaldo(Cliente $cliente)
+    {
+        
+        return  Pago::where('codigo',$cliente->codigo)->orderBy('fecha','desc')->get();
     }
 }

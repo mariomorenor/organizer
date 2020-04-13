@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('lista/obtenerCodigos','ListaController@obtener_Codigos')->name('codigos');
+Route::get('pagos/comprobarSaldo/{cliente}','PagoController@comprobarSaldo')->name('comprobarSaldo');
 
 Route::resources([
     'clientes'=>'ClienteController',

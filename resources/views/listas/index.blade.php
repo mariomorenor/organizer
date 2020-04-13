@@ -49,7 +49,7 @@
                         <button type="button" onclick="eliminar_Registros(true)" class="btn-danger btn">Eliminar Lista</button>
                         <a class="btn btn-primary" role="button" href="{{ route('listas.create') }}">Agregar Lista</a>
                     </div>
-                    <table data-show-columns="true" data-show-export="true" id="table"  data-unique-id="cliente_codigo" data-custom-search="buscarCodigo" data-show-footer="true" data-url="{{ route('codigos') }}" data-toolbar="#toolbar" data-search="true" data-height="450" class="table" data-locale="es_SP">
+                    <table data-show-columns="true" data-show-export="true" id="table"  data-unique-id="cliente_codigo" data-custom-search="buscarCodigo" data-show-footer="true" data-url="{{ route('codigos') }}" data-toolbar="#toolbar" data-search="true" data-height="700" class="table" data-locale="es_SP">
                         <thead class="thead-dark">
                             <tr>
                                 <th data-field="acciones"  data-align="center" data-formatter="accionesFormatter">Acciones</th>

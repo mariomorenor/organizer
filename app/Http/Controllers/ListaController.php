@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Cliente;
 use App\Pago;
 use App\Rules\ComprobarSiExiste;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 
 class ListaController extends Controller
@@ -70,17 +72,22 @@ class ListaController extends Controller
                         'fecha' => $request->fecha,
                     ]);
                         $cliente = Cliente::find($request->codigo[$i]);
-                        $pago = Pago::where('codigo','like',$request->codigo[$i])->orderBy('fecha','desc')->first();
-                      
+                        // $pago = Pago::where('codigo','like',$request->codigo[$i])->orderBy('fecha','desc')->first();
+                        
                         $nuevo_pago = new Pago;
                         $nuevo_pago->codigo = $request->codigo[$i];
-                        $nuevo_pago->fecha = $request->fecha;
+                        $hora =  Carbon::now();
+                        $nuevo_pago->fecha =  Carbon::parse($request->fecha.' '.$hora->toTimeString())->toDateTimeString();
                         $nuevo_pago->tipo_transaccion = 'pelado de patas';
                         $nuevo_pago->cantidad = $cliente->cobranza * $request->cantidad[$i];
                         $nuevo_pago->reses = $request->cantidad[$i];
-                        $nuevo_pago->saldo = $pago==''? $cliente->cobranza * $request->cantidad[$i] :$pago->saldo + ($cliente->cobranza * $request->cantidad[$i]) ;
+                        // $nuevo_pago->saldo = $pago==''? $cliente->cobranza * $request->cantidad[$i] :$pago->saldo + ($cliente->cobranza * $request->cantidad[$i]);
+                  
+                        $nuevo_pago->saldo = $this->calcularSaldo($request->codigo[$i], $cliente->cobranza * $request->cantidad[$i]);
+                       
                         $nuevo_pago->save();
                 });
+
           
 
             }
@@ -176,5 +183,27 @@ class ListaController extends Controller
             ->orderBy('posicion','asc')
             ->get();
         }
+    }
+
+    public function calcularSaldo($codigo, $cantidad)
+    {
+        $saldo = 0;
+        $registros = Pago::where('codigo','like',$codigo)->orderBy('fecha','asc')->get();
+        if (count($registros)==0) {
+            
+            $saldo += doubleval($cantidad);
+           
+        }else{
+            for ($i=0; $i < count($registros) ; $i++) { 
+                if($registros[$i]->tipo_transaccion === 'pelado de patas'){
+                    $saldo += $registros[$i]->saldo; 
+                }else{
+                    $saldo -= $registros[$i]->cantidad; 
+                }
+                
+            }
+        }
+
+        return $saldo;
     }
 }

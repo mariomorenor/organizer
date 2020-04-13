@@ -155,6 +155,7 @@ class ClienteController extends Controller
     }
 public function comprobarCliente(Cliente $cliente)
 {
+    
     return $cliente;
 }
 }

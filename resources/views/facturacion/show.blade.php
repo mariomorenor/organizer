@@ -11,11 +11,10 @@
                 <div class="card">
                     <div class="card-header pb-0">
                         <div class="row">
-                            <div class="col">
+                            <div class="col-8">
                                 <div class="form-group">
                                     <label for="codigo" class="font-weight-bold">Código:</label>
                                     <div class="d-flex">
-
                                         <input type="text" readonly value="{{$codigo}}" id="codigo" class="form-control text-center">
                                         <label for="filtro" class="font-weight-bold ml-2 my-auto mr-2">Ver:</label>
                                         <select onchange="buscar_por_Filtro(this.value)" name="filtro" id="filtro" class="form-control">
@@ -27,7 +26,9 @@
                                 </div>
                             </div>
                             <div class="col-4">
-                             
+                                <div class="d-flex justify-content-end">
+                                    <a href="{{ route('pagos.index') }}" class="btn btn-secondary">Regresar</a>
+                                </div>
                             </div>
                         </div>
                     </div>
