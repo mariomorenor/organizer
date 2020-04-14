@@ -156,6 +156,26 @@ class ClientesTableSeeder extends Seeder
             'codigo'=>'79',
             'posicion'=>36
         ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'65',
+            'posicion'=>37
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'5',
+            'posicion'=>38
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'HD',
+            'posicion'=>39
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'HML',
+            'posicion'=>40
+        ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'V11',
+            'posicion'=>41
+        ]);
         
     }
 }
