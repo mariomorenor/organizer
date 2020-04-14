@@ -180,6 +180,10 @@ class ClientesTableSeeder extends Seeder
             'codigo'=>'83',
             'posicion'=>42
         ]);
+        DB::table('clientes')->insert([
+            'codigo'=>'500',
+            'posicion'=>43
+        ]);
         
     }
 }
