@@ -42,7 +42,8 @@ class ClienteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(ClienteRequest $request)
-    {
+    {   
+        
         $nuevo_Cliente = new Cliente;
         $nuevo_Cliente->fill($request->all());
 

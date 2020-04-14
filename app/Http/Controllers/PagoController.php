@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cliente;
 use App\Pago;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -64,7 +65,7 @@ class PagoController extends Controller
        
         DB::transaction(function() use ($request, $i){
 
-           
+            $hora =  Carbon::now();
             $saldo_actual = Pago::where('codigo','like',$request->codigo[$i])->orderBy('fecha','desc')->first();
             
             $saldo_actual = ($saldo_actual->saldo - $request->dinero[$i]) < 0 ? 0: ($saldo_actual->saldo - $request->dinero[$i]) ;
@@ -72,7 +73,8 @@ class PagoController extends Controller
 
             $registro_pago->codigo = $request->codigo[$i];
             $registro_pago->tipo_transaccion = 'Pagado';
-            $registro_pago->fecha = $request->fecha[$i];
+            // $registro_pago->fecha = $request->fecha[$i];
+            $registro_pago->fecha = Carbon::parse($request->fecha[$i].' '.$hora->toTimeString())->toDateTimeString();
             $registro_pago->cantidad = $request->dinero[$i];
             $registro_pago->saldo = $saldo_actual;
             $registro_pago->descripcion = $request->descripcion[$i];
@@ -147,6 +149,6 @@ class PagoController extends Controller
     public function comprobarSaldo(Cliente $cliente)
     {
         
-        return  Pago::where('codigo',$cliente->codigo)->orderBy('fecha','desc')->get();
+        return  Pago::where('codigo',$cliente->codigo)->orderBy('fecha','desc')->first();
     }
 }

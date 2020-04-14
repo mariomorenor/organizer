@@ -38,7 +38,7 @@ function insertarCodigo() {
             $.get({
                 url: '/pagos/comprobarSaldo/' + $('#codigo_a_insertar').val(),
                 success: function (response) {
-                    
+                 
                   if (response === '') {
                       Swal.fire({
                           icon: 'info',
@@ -97,7 +97,8 @@ function eliminarFila(val) {
     });
 }
 
-function codigoFormatter(value) {
+function codigoFormatter(value,row) {
+    
     return '<input type="text" hidden name="codigo[]" required value="'+value+'" >'+value
 }
 

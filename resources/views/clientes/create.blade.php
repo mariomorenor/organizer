@@ -70,6 +70,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-3 mx-auto">
+                            <div class="form-group">
+                                <label for="cobranza">Cobranza</label>
+                                <input name="cobranza" required step="0.01" type="number" value="2.50"  class="form-control">
+                            </div>
+                        </div>
+                    </div>
                     <div class="row mt-2">
                         <div class="col-8 mx-auto">
                             <button type="submit" class="btn btn-block btn-success shadow">GUARDAR</button>
