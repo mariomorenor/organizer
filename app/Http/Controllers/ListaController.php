@@ -83,9 +83,10 @@ class ListaController extends Controller
                         $nuevo_pago->reses = $request->cantidad[$i];
                         // $nuevo_pago->saldo = $pago==''? $cliente->cobranza * $request->cantidad[$i] :$pago->saldo + ($cliente->cobranza * $request->cantidad[$i]);
                   
+                        
                         $nuevo_pago->saldo = $this->calcularSaldo($request->codigo[$i], $cliente->cobranza * $request->cantidad[$i]);
-                       
                         $nuevo_pago->save();
+                        
                 });
 
           
