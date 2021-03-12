@@ -22,7 +22,7 @@
         "jquery-ui": "^1.12.1",
         "jquery-ui-themes": "^1.12.0",
         "js-xlsx-core": "^1.0.3",
-        "jspdf": "^1.5.3",
+        "jspdf": "^2.3.1",
         "jspdf-autotable": "^3.3.2",
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.13",
